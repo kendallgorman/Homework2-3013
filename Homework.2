@@ -1,0 +1,176 @@
+// Kendall Gorman
+
+using System;
+
+namespace GPA
+{
+    public class Class1
+    // GPA Calculator
+
+       /*C # program that prompts the user to enter the percentage of four subject accounts, marketing, econimics and mis. Then find the gpa value. Print the letter grades of all subjects and gpa value on the console output.
+*/
+
+//Program.cs
+
+namespace GPA
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+
+                const double CREDITS = 3.0;
+                const int NUM_SUBJECTS = 4;
+                Console.WriteLine("GPA Claculator");
+                double accountPercentage = 0;
+                double marketingPercentage = 0;
+                double economicsPercentage = 0;
+                double misPercentage = 0;
+
+
+                //read accounting percentage
+                Console.WriteLine("Enter Accounting percentage : ");
+                accountPercentage = Double.Parse(Console.ReadLine());
+
+                //read Marketing percentage
+                Console.WriteLine("Enter Marketing percentage : ");
+                marketingPercentage = Double.Parse(Console.ReadLine());
+
+                //read Economics percentage
+                Console.WriteLine("Enter Economics percentage : ");
+                economicsPercentage = Double.Parse(Console.ReadLine());
+
+                //read MIS percentage
+                Console.WriteLine("Enter MIS percentage : ");
+                misPercentage = Double.Parse(Console.ReadLine());
+
+                //Get the letter grades of the each subject
+                char accountLetterGrade = getLetterGrade(accountPercentage);
+                char marketingLetterGrade = getLetterGrade(marketingPercentage);
+                char economicsLetterGrade = getLetterGrade(economicsPercentage);
+                char misLetterGrade = getLetterGrade(misPercentage);
+
+                //Ge the credit points for the letter grades
+                double accountPoints = getGradePoints(accountLetterGrade);
+                double marketingPoints = getGradePoints(marketingLetterGrade);
+                double economicsPoints = getGradePoints(economicsLetterGrade);
+                double misLetterPoints = getGradePoints(misLetterGrade);
+
+                //calculate the earned credit points
+                double totalEarnedPoints = accountPoints * CREDITS +
+                marketingPoints * CREDITS +
+                economicsPoints * CREDITS +
+                misLetterPoints * CREDITS;
+
+                //calculate the total credits points
+                double totalCreditPoints = CREDITS * NUM_SUBJECTS;
+
+                //calculate the gpa value
+                double gpa = totalEarnedPoints / totalCreditPoints;
+
+                //Print the letter grades of subjects
+                Console.WriteLine("{0,-10} {1}", "Accounts :", accountLetterGrade);
+                Console.WriteLine("{0,-10} {1}", "Marketing :", marketingLetterGrade);
+                Console.WriteLine("{0,-10} {1}", "Economics :", economicsLetterGrade);
+                Console.WriteLine("{0,-10} {1}", "MIS :", misLetterGrade);
+
+                //print gpa value
+                Console.WriteLine("{0,-10} {1}", "GPA :", gpa);
+                Console.ReadKey();
+            }
+
+            /*The method getGradePoints that takes character letter as input
+            and returns the points for the corresponding letter grade*/
+            public static double getGradePoints(char letterGrade)
+            {
+                float gradePoints = 0;
+                switch (letterGrade)
+                {
+                    case 'A':
+                        gradePoints = 4; break;
+                    case 'B':
+                        gradePoints = 3; break;
+                    case 'C':
+                        gradePoints = 2; break;
+                    case 'D':
+                        gradePoints = 1; break;
+                    case 'F':
+                        gradePoints = 0; break;
+                }
+                return gradePoints;
+            }
+            /*The method getLetterGrade that takes double value as input
+            and returns the letter grade of percentage*/
+            public static char getLetterGrade(double percenetage)
+            {
+                char letterGrade;
+
+                if (percenetage >= 90)
+                    letterGrade = 'A';
+                else if (percenetage >= 80 && percenetage < 90)
+                    letterGrade = 'B';
+                else if (percenetage >= 70 && percenetage < 80)
+                    letterGrade = 'C';
+                else if (percenetage >= 60 && percenetage < 70)
+                    letterGrade = 'D';
+                else
+                    letterGrade = 'F';
+
+                return letterGrade;
+            }
+        }
+    }
+
+    
+    
+    
+    /* Please read the comments and see the output*/
+
+
+{
+class FizzBuzz
+
+    {
+
+        public static void Main()
+        {
+
+            string input; // For reading input
+
+            int num;      // To store the int value if input is valid
+
+            bool isValidInput;  // Boolean variable to check input is valid is or not
+
+            do
+            {
+
+                Console.WriteLine("Enter Lucky Number: ");
+
+                input = Console.ReadLine(); // Read user input
+
+                isValidInput = int.TryParse(input, out num); // Check input is integer or not
+
+                if (!isValidInput)  // If input is not valid, show error message
+
+                    Console.WriteLine("Sorry, but you are unable to run the FizzBuzz process due to the input not being a valid number.");
+
+            } while (!isValidInput);  // Run this until, user give correct input
+
+            string result = ""; // Variable to keep the result for the valid input integer
+
+            if (num % 15 == 0) result = num + "  FizzBuzz"; // DECIDE parameter for BUZ FIZZ GAME
+
+            else if (num % 3 == 0) result = num + " Fizz";
+
+            else if (num % 5 == 0) result = num + " Buzz";
+
+            else result = "" + num;
+
+            Console.WriteLine(result);   // Show the result
+
+            Console.WriteLine("PRESS enter for exit"); // Exit of game
+
+            Console.ReadLine();
+
+        }
+    }
